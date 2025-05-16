@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { UserAnswer } from '../types/screener';
 
-const API_URL = 'https://blueprint-screener-backend-uk8l.vercel.app/';
+const API_URL = 'https://blueprint-screener-backend-uk8l.vercel.app';
 
 export const fetchScreener = async () => {
   const res = await axios.get(`${API_URL}/screener`);
