@@ -45,9 +45,9 @@ const Questionnaire: React.FC<Props> = ({ screener, onComplete }) => {
   );
 
   return (
-    <div className="max-w-md p-6 bg-white rounded shadow-md m-4">
+    <div className="max-w-md p-6 bg-white rounded shadow-md m-4 text-gray-700">
       <h1 className="text-xl font-bold mb-2">{screener.display_name}</h1>
-      <p className="mb-4 text-gray-700">{section.title}</p>
+      <p className="mb-4">{section.title}</p>
 
       <div className="mb-6">
         <div className="w-full bg-gray-200 rounded-full h-2.5">
@@ -68,7 +68,7 @@ const Questionnaire: React.FC<Props> = ({ screener, onComplete }) => {
           <button
             key={answer.value}
             onClick={() => handleAnswer(answer.value)}
-            className="text-gray-700 py-2 rounded hover:bg-gray-100"
+            className="text-gray-700 py-2 rounded hover:bg-gray-100 bg-white"
           >
             {answer.title}
           </button>
