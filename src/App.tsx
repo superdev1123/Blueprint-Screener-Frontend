@@ -22,14 +22,14 @@ function App() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center h-screen w-screen">
         Loading...
       </div>
     );
   }
 
   if (!screener) {
-    return <div> Error loading screener </div>;
+    return <div className="flex items-center justify-center h-screen w-screen"> Error loading screener </div>;
   }
 
   return (
