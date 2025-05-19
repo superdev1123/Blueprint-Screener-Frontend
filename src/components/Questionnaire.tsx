@@ -72,7 +72,7 @@ const Questionnaire: React.FC<Props> = ({ screener, onComplete }) => {
           <button
             key={answer.value}
             onClick={() => handleAnswer(answer.value)}
-            className="text-gray-700 py-2 rounded hover:bg-gray-100 bg-white"
+            className="text-gray-700 py-2 rounded hover:bg-gray-100 !bg-blue-100"
           >
             {answer.title}
           </button>
