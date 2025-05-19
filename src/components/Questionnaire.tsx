@@ -17,11 +17,15 @@ const Questionnaire: React.FC<Props> = ({ screener, onComplete }) => {
 
   const currentQuestion = questions[currentIndex];
 
+  // Calculate the progress percentage based on the current question index
   const progressPercent = useMemo(
     () => (currentIndex / totalQuestions) * 100,
     [currentIndex, totalQuestions]
   );
 
+  // Handle answer selection and progress to the next question
+  // If it's the last question, submit the answers
+  // call the onComplete callback with the results
   const handleAnswer = useCallback(
     async (value: number) => {
       const newAnswers = [

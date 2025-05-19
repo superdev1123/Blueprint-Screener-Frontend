@@ -3,20 +3,19 @@ import type { Screener } from "./types/screener";
 import { fetchScreener } from "./api/screener";
 import Questionnaire from "./components/Questionnaire";
 import Result from "./components/Result";
+import { useResultStore } from "./store/useResultStore";
 
 function App() {
   const [screener, setScreener] = useState<Screener | null>(null);
-  const [results, setResults] = useState<string[] | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const results = useResultStore((state) => state.results);
+  const setResults = useResultStore((state) => state.setResults);
 
   useEffect(() => {
     fetchScreener()
-      .then((data) => {
-        setScreener(data);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch screener:", err);
-      })
+      .then((data) => setScreener(data))
+      .catch((err) => console.error("Failed to fetch screener:", err))
       .finally(() => setLoading(false));
   }, []);
 
@@ -29,13 +28,17 @@ function App() {
   }
 
   if (!screener) {
-    return <div className="flex items-center justify-center h-screen w-screen"> Error loading screener </div>;
+    return (
+      <div className="flex items-center justify-center h-screen w-screen">
+        Error loading screener
+      </div>
+    );
   }
 
   return (
     <div className="flex items-center justify-center h-screen w-screen bg-gray-100">
       {results ? (
-        <Result results={results} />
+        <Result />
       ) : (
         <Questionnaire screener={screener} onComplete={setResults} />
       )}
